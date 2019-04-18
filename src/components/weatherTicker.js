@@ -4,18 +4,15 @@ import React from 'react';
 /*PROJECT */
 import WeatherTickerItem from './weatherTickerItem';
 
-// import * as CONSTS from '../config/constants';
-// import FUNCS from '../config/funcs';
-
 let currentDay = null;
 
-const getTickerItem = (forecast, currentTemperatureUnit) => {
+const getTickerItem = (forecast, currentTemperatureUnit, cityName) => {
 	/**check what day we are looking at - if it is different than what we were looking at we want to add a label ticker item */
 	if (forecast.dt !== currentDay) {
 		currentDay = forecast.dt;
 		return (
 			<React.Fragment key={`${forecast.dt}LABEL`}>
-				<WeatherTickerItem isLabel={true} forecast={forecast} />
+				<WeatherTickerItem isLabel={true} forecast={forecast} cityName={cityName} />
 				<WeatherTickerItem forecast={forecast} currentTemperatureUnit={currentTemperatureUnit} />
 			</React.Fragment>
 		);
@@ -38,7 +35,7 @@ const WeatherTicker = (props) => {
 				<WeatherTickerItem isFirst={true} />
 
 				{props.forecastData.details.map((forecast) => {
-					return getTickerItem(forecast, props.currentTemperatureUnit);
+					return getTickerItem(forecast, props.currentTemperatureUnit, props.forecastData.cityName);
 				})}
 			</div>
 		</div>

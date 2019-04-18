@@ -13,7 +13,13 @@ export default {
 	foreCastData: null,
 	haveForeCastData: false,
 
-	currentTemperatureUnit: CONSTS.STRING_UNIT_CELSIUS,
+	currentTemperatureUnit: CONSTS.TYPES_TEMPERATURE_UNIT_CELSIUS,
 
-	backgroundImage: null
+	showSearch: false,
+	isSearching: false,
+	searchTerm: '',
+	failedSearch: false,
+
+	backgroundImage: null,
+	lastBackgroundImage: CONSTS.STRING_DEFAULT_BG_IMAGE
 };

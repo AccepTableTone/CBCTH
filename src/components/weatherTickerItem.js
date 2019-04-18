@@ -9,8 +9,8 @@ const WeatherTickerItem = (props) => {
 	if (props.isFirst) {
 		return (
 			<div className="ticker-item first-ticker-item">
-				<div>
-					5 Day Forecast <i class="far fa-smile" />
+				<div className="first-ticker-item-title">
+					5 Day Forecast <i className="far fa-smile" />
 				</div>
 			</div>
 		);
@@ -21,6 +21,7 @@ const WeatherTickerItem = (props) => {
 		return (
 			<div className="ticker-item label-ticker-item">
 				<div className="ticker-item-label">{props.forecast.dt}</div>
+				<div className="ticker-item-city">{props.cityName}</div>
 				<div className="ticker-item-dow">{props.forecast.dt_wk}</div>
 			</div>
 		);

@@ -10,15 +10,57 @@ html {
 	width: 100%;
 	background: no-repeat center top;
 	background-size: cover;
+	background-color: rgb(11, 78, 95);
 }
 
+/* SEARCH */
+.search-container {
+	height: 60px;
+	margin: auto;
+	width: 22%;
+	min-width: 300px;
+	top: 15%;
+	position: relative;
+}
+.search-input-container {
+	padding-bottom: 5px;
+}
+.search-input {
+	outline: 0;
+	border-width: 1px;
+	border: none;
+	border-color: #fff;
+	color: #fff;
+	width: 100%;
+	font-size: 18px;
+	background-color: rgba(0, 0, 0, 0.6);
+	text-transform: lowercase;
+	padding: 10px 50px 10px 10px;
+}
+.search-icon-container i {
+	color: #ccc;
+	position: absolute;
+	z-index: 999;
+	right: 5px;
+	top: 20px;
+	font-size: 30px;
+}
+.failed-search-msg {
+	height: 15px;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color: #000;
+	text-align: center;
+	text-shadow: 4px 4px 6px #fff;
+}
 /* WEATHER DETAILS */
 .details-container {
-	width: 20%;
-	min-width: 280px;
-	height: 290px;
+	width: 22%;
+	min-width: 300px;
+	height: 320px;
 	padding: 15px 30px;
-	background-color: rgba(0, 0, 0, 0.4);
+	background-color: rgba(0, 0, 0, 0.5);
 	margin: auto;
 	position: relative;
 	top: 15%;
@@ -55,40 +97,53 @@ html {
 	font-size: 40px;
 	font-weight: 500;
 }
+.details-nav {
+	position: absolute;
+	bottom: 10px;
+	right: 5px;
+}
 .details-nav span {
-	color: #fff;
+	color: rgb(187, 185, 185);
 	font-size: 14px;
 	margin-right: 10px;
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 900;
 }
 .details-nav i {
-	color: #fff;
+	color: rgb(187, 185, 185);
 	font-size: 12px;
+	margin-right: 10px;
 }
 .details-nav span:hover,
 .details-nav i:hover {
-	color: #ffa15e;
+	color: #ff9e59;
 	cursor: pointer;
 }
 
-.details-date,
 .summary-text {
+	font-family: 'Roboto', sans-serif;
+	font-size: 12px;
+	color: #f4f4f4;
+	padding-left: 10px;
+	margin-bottom: 15px;
+}
+.details-date {
 	font-family: 'Roboto', sans-serif;
 	font-size: 16px;
 	color: #f4f4f4;
-}
-.details-nav {
-	position: absolute;
-	bottom: 10px;
-	right: 20px;
+	padding-left: 10px;
 }
 
 /* MISC */
 .display-flex {
 	display: flex;
 }
-
+.pointer {
+	cursor: pointer;
+}
+.hidden {
+	display: none;
+}
 /* TICKER */
 .ticker-item-label {
 	font-family: 'Montserrat', sans-serif;
@@ -119,8 +174,8 @@ html {
 	font-weight: normal;
 }
 .ticker-item-unit {
-	top: 15px;
-	right: -15px;
+	top: 5px;
+	right: -12px;
 	font-family: 'Montserrat', sans-serif;
 	font-size: 8px;
 }
@@ -160,7 +215,7 @@ html {
 	width: 100%;
 	overflow: hidden;
 	height: 70px;
-	background-color: rgba(0, 0, 0, 0.3);
+	background-color: rgba(0, 0, 0, 0.5);
 	padding-left: 100%;
 	box-sizing: content-box;
 	padding-top: 15px;
@@ -189,15 +244,20 @@ html {
 .label-ticker-item {
 	width: 360px !important;
 	padding-left: 130px;
-	text-align: right !important;
+	position: relative;
+	top: -3px;
 }
-
+.ticker-item-city {
+	font-family: 'Roboto', sans-serif;
+	color: #eee;
+	font-size: 10px;
+}
 .first-ticker-item {
 	width: 260px !important;
 }
-.first-ticker-item div {
-	font-family: 'Roboto', sans-serif;
-	font-size: 18px;
+.first-ticker-item-title {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 20px;
 	color: #fff;
 	position: relative;
 	top: -15px;

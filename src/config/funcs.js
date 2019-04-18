@@ -2,23 +2,23 @@
 /** LIBRARIES*/
 import dateFormat from 'date-fns/format';
 /**PROJECT */
-import * as CONSTS from '../config/constants';
+import * as CONSTS from './constants';
 
 //°F
 export default {
-	/**set background image - this may change if we add the pexels call */
-	getBackgroundImageStyle(imageFromState) {
-		function getBackgroundImage(image) {
-			if (!image) {
-				return 'https://www.vernonmorningstar.com/wp-content/uploads/2018/10/13912827_web1_180518-BPD-okanagan-weather.jpg';
-			} else {
-				return image;
-			}
+	/**set background image - TODO: sort out how to properly transition from one background image to another - this is bareable */
+	getBackgroundImageStyle(newImage, currentImage) {
+		if (!newImage) {
+			return {
+				backgroundImage: `url(${currentImage})`,
+				transition: '0s, 3s'
+			};
+		} else {
+			return {
+				backgroundImage: `url(${newImage}), url(${currentImage})`,
+				transition: '0s, 3s'
+			};
 		}
-
-		return {
-			backgroundImage: `url(${getBackgroundImage(imageFromState)})`
-		};
 	},
 	/**the weather api include a icon reference - so lets show an icon e!--[../] - if we don't have an icon, default to a sunny day */
 	getWeatherIconSource(icon) {
@@ -132,6 +132,19 @@ export default {
 
 		return weatherData;
 	},
+	/**when refreshing we search by city id data originally populated by coords or city id */
+	mapCityWeatherData(json) {
+		const jsonWeather = Array.isArray(json.weather) && json.weather.length > 0 ? json.weather[0] : null;
+		return {
+			summary: jsonWeather ? jsonWeather.description : '',
+			summaryIcon: jsonWeather ? jsonWeather.icon : null,
+			temparatureInKelvins: json.main.temp,
+			temparatureInCelsius: this.convertKelvinTemperatureToCelsius(json.main.temp),
+			temparatureInFahrenheit: this.convertKelvinTemperatureToFahrenheit(json.main.temp),
+			cityId: json.id,
+			cityName: json.name
+		};
+	},
 	/**we get a 5 day forecast from the weather api once we have a city - we get the data in json - this takes that json and creates a simple model  */
 	mapForecastData(forecastJson) {
 		/**our final forecast model */
@@ -161,7 +174,6 @@ export default {
 
 			return m;
 		});
-
 		return forecastData;
 	},
 	/**utility to format dates */
@@ -173,5 +185,11 @@ export default {
 		return str.replace(/\w\S*/g, function(txt) {
 			return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
 		});
+	},
+	isEmptyString(str) {
+		return str.toString().replace(/ /g, '') === '';
+	},
+	isNullorEmpty(val) {
+		return val === null || !val || this.isEmptyString(val);
 	}
 };
