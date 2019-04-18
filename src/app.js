@@ -36,8 +36,6 @@ class App extends React.Component {
 	};
 	/**render app */
 	render() {
-		if (!this.props.state || !this.props.state.weatherData) return null;
-
 		return (
 			<div
 				className="weather-page-container"
@@ -65,18 +63,19 @@ class App extends React.Component {
 						)}
 					</div>
 
-					{this.props.state.haveWeatherData && (
-						<WeatherDetails
-							weatherData={this.props.state.weatherData}
-							refreshWeatherData={this.refreshWeatherData.bind(this)}
-							loadCurrentLocationWeather={this.getWeatherByLocation.bind(this)}
-							currentTemperatureUnit={this.props.state.currentTemperatureUnit}
-							changeTemperatureUnit={this.changeTemperatureUnit.bind(this)}
-							isLoading={this.props.state.isLoading}
-							showingSearch={this.props.state.showSearch}
-							toggleSearch={this.props.toggleSearch.bind(this)}
-						/>
-					)}
+					<WeatherDetails
+						weatherData={this.props.state.weatherData}
+						refreshWeatherData={this.refreshWeatherData.bind(this)}
+						loadCurrentLocationWeather={this.getWeatherByLocation.bind(this)}
+						currentTemperatureUnit={this.props.state.currentTemperatureUnit}
+						changeTemperatureUnit={this.changeTemperatureUnit.bind(this)}
+						isLoading={this.props.state.isLoading}
+						showingSearch={this.props.state.showSearch}
+						toggleSearch={this.props.toggleSearch.bind(this)}
+						haveWeatherData={this.props.state.haveWeatherData}
+						haveUserPosition={this.props.state.haveUserPosition}
+					/>
+
 					{this.props.state.haveForeCastData && (
 						<WeatherTicker
 							forecastData={this.props.state.foreCastData}

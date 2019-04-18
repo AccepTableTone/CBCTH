@@ -54,11 +54,26 @@ html {
 	text-align: center;
 	text-shadow: 4px 4px 6px #fff;
 }
+.no-location-msg {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 20px;
+	color: #fff;
+}
+.no-location-msg span {
+	text-decoration: underline;
+}
+.no-location-msg div {
+	margin-top: 20px;
+}
+.no-location-msg span:hover {
+	color: #ff9e59;
+	cursor: pointer;
+}
 /* WEATHER DETAILS */
 .details-container {
 	width: 22%;
 	min-width: 300px;
-	height: 320px;
+	min-height: 320px;
 	padding: 15px 30px;
 	background-color: rgba(0, 0, 0, 0.5);
 	margin: auto;
