@@ -13,7 +13,7 @@
  - The weather information by location is pulled down as XML and parsed to JSON per the technical test summary but the 5 day forecast is pulled down as JSON (sort of a deviation)
  - ...I guess it would come down to one's definition of a 'button', but to refresh the weather data the user needs to click the refresh icon in bottom right of the weather details component
 - User can switch between celsius and fahrenheit (UI does not display kelvins, but that could be easily changed)
-- The site has a city search feature that returns weather data for that city, data that is refreshed the same way as the location weather data is (refresh icon).
+- The site has a city search feature that returns weather data for that city and is refreshed the same way as the location weather data (refresh icon).
 - When any weather data is successfully returned from the OpenWeatherMap API, the city information in that response is used to request a 'skyline' image from the [Pexels image API](https://www.pexels.com/api/). The 'skyline' image is meant to be a location relevant background image for the page. NOTE: turns out the PEXEL library isn't something you would bet on for content accuracy, so some background images don't exactly match the city searched (but the images are great).
 
 ##### POINTS OF NOTE
