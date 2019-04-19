@@ -1,68 +1,30 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Senior Developer Exercise
 
-## Available Scripts
+##### SPECS
+- React, Redux, Thunk
 
-In the project directory, you can run:
+##### DELIVERABLES
+- You can view the assignment online at [cbcth.acceptabletone.com](http://cbcth.acceptabletone.com). 
+- Code is hosted in the following repo: [github.com/AccepTableTone/CBCTH](https://github.com/AccepTableTone/CBCTH).
+- To run the project locally, clone the above repo, run *npm install* then *npm start*
+- The site is not IE 11 friendly - Chrome and Firefox, all good e!--[oo/]
 
-### `npm start`
+##### DEVIATIONS
+ - to come
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+##### POINTS OF NOTE
+- Cooincidently this assignment was similar to a section in an online Udemy React/Redux course I worked on a couple years ago; and I was able to reuse the same API key.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+##### OUTSTANDING ITEMS
+- I am not usually capturing people's location through the browser and perhaps it's a sign of the times but this task is not as easy as it once was without an SSL certificate. You will have to pull down the code and run the site locally to see the location feature at work.
+- After reading the technical test summary I had envisioned what I eventually built.... except for the choppy background image transitions, so that is something that needs work (if you revist a city, then your browser has the image cached and the transition is nice and smooth, as it was intended)
+- There is also no real error handling outside of a couple state variables - tsk, tsk.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Thanks for your time reviewing what I've brought to the table o[''/]o 
 
-### `npm run build`
+-D
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+[davidmckinnon.ca](http://davidmckinnon.ca/) ||
+[acceptabletone.com](http://acceptabletone.com/)
