@@ -32,7 +32,7 @@ class App extends React.Component {
 		);
 	};
 	changeTemperatureUnit = (newUnit) => {
-		this.props.changeTemperatureUnit();
+		this.props.changeTemperatureUnit(newUnit);
 	};
 	/**render app */
 	render() {
