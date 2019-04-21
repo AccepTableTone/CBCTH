@@ -7,7 +7,7 @@ export const IMAGES_SEARCH_URL = `http://glth.acceptabletone.com/glth/api/images
 /**action types */
 export const ACTION_TYPE_IS_LOADING = 'isloading';
 export const ACTION_TYPE_IS_SEARCHING = 'issearching';
-export const ACTION_TYPE_FAILED_SEARCH = 'failedSearch';
+export const ACTION_TYPE_EMPTY_SEARCH = 'emptySearch';
 export const ACTION_TYPE_SETTING_BACKGROUND = 'background';
 export const ACTION_TYPE_HAS_ERROR = 'haserror';
 export const ACTION_TYPE_USER_LOCATION = 'userlocation';

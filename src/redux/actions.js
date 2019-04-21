@@ -1,5 +1,15 @@
+/**REACT */
+import React from 'react';
+/*LIBRARIES* */
+import 'whatwg-fetch';
+import Promise from 'promise-polyfill';
+/*PROJECT */
 import * as CONSTS from '../config/constants';
 import FUNCS from '../config/funcs';
+
+if (!window.Promise) {
+	window.Promise = Promise;
+}
 
 /**get the users current location from navigator */
 export const getCurrentUsersLocation = () => {
@@ -42,12 +52,11 @@ export const getWeatherByCoordinates = (longitude, latitude) => {
 				/**parse xml response to JSON object and dispatch to store */
 				const weatherData = FUNCS.mapWeatherXmlToJson(response);
 				dispatch(action.setWeatherData(weatherData));
-
-				if (!!weatherData.cityId) {
+				if (weatherData && !!weatherData.cityId) {
 					dispatch(getFiveDayForecastByCityId(weatherData.cityId));
 				}
-
-				if (weatherData.cityName) {
+				/**if we have a city name - get a location specifc background image */
+				if (weatherData && weatherData.cityName) {
 					dispatch(getCityImage(weatherData.cityName));
 				}
 			});
@@ -67,7 +76,20 @@ export const getWeatherByCityId = (cityId) => {
 				/**parse xml response to JSON object and dispatch to store */
 				const weatherData = FUNCS.mapCityWeatherData(response);
 				dispatch(action.setWeatherData(weatherData));
-
+				return weatherData;
+			})
+			.catch((err) => {
+				dispatch(
+					action.setError(
+						<div>
+							Ooooops, seems like there was a problem loading that location. Please try again.
+							<i className="far fa-frown" />
+						</div>
+					)
+				);
+			})
+			.then((weatherData) => {
+				/**we don't tell the user if forecast requests didn't work - so no catch */
 				if (!!weatherData.cityId) {
 					dispatch(getFiveDayForecastByCityId(weatherData.cityId));
 				}
@@ -77,27 +99,43 @@ export const getWeatherByCityId = (cityId) => {
 /**get weather by city name */
 export const getWeatherByCityName = (cityName) => {
 	return (dispatch) => {
+		dispatch(action.setIsSearching(true));
 		fetch(`${CONSTS.CURRENT_WEATHER_URL}&q=${cityName}`)
 			.then((response) => {
-				/**check response */
-				if (!response.ok) dispatch(action.setError(true));
+				/**check response - but ignor e 404 errors*/
+				if (!response.ok && response.status !== 404) dispatch(action.setError(true));
 				return response;
 			})
 			.then((response) => response.json())
 			.then((response) => {
 				/**if 404 then the cityname could not be found */
 				if (response.cod === '404') {
-					dispatch(action.setFailedSearch(cityName));
+					dispatch(action.setEmptySearch(cityName));
 				} else {
 					/**parse xml response to JSON object and dispatch to store */
 					const weatherData = FUNCS.mapCityWeatherData(response);
 					dispatch(action.setWeatherData(weatherData));
+					return weatherData;
+				}
+			})
+			.catch((err) => {
+				dispatch(
+					action.setError(
+						<div>
+							Ooooops, seems like there was a problem loading that location. Please try again.
+							<i className="far fa-frown" />
+						</div>
+					)
+				);
+			})
+			.then((weatherData) => {
+				/**we don't tell the user if iamge of forecast requests didn't work - so no catch */
+				if (weatherData && !!weatherData.cityId) {
+					dispatch(getFiveDayForecastByCityId(weatherData.cityId));
+				}
 
-					if (!!weatherData.cityId) {
-						dispatch(getFiveDayForecastByCityId(weatherData.cityId));
-					}
-
-					dispatch(getCityImage(cityName));
+				if (weatherData && weatherData.cityName) {
+					dispatch(getCityImage(weatherData.cityName));
 				}
 			});
 	};
@@ -122,7 +160,7 @@ export const getFiveDayForecastByCityId = (cityId) => {
 /**try to find city image for background */
 export const getCityImage = (cityName) => {
 	return (dispatch) => {
-		fetch(`${CONSTS.IMAGES_SEARCH_URL}/${cityName} skyline`)
+		fetch(`${CONSTS.IMAGES_SEARCH_URL}/${cityName}`)
 			.then((response) => {
 				/**check response */
 				if (!response.ok) dispatch(action.setError(true));
@@ -171,16 +209,16 @@ const action = {
 			isSearching
 		};
 	},
-	setFailedSearch(searchTerm) {
+	setEmptySearch(searchTerm) {
 		return {
-			type: CONSTS.ACTION_TYPE_FAILED_SEARCH,
+			type: CONSTS.ACTION_TYPE_EMPTY_SEARCH,
 			searchTerm
 		};
 	},
-	setError(hasError) {
+	setError(errorMessage) {
 		return {
 			type: CONSTS.ACTION_TYPE_HAS_ERROR,
-			hasError
+			errorMessage
 		};
 	},
 	setLocation(userPosition) {

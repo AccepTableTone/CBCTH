@@ -10,13 +10,13 @@ const SearchBox = (props) => {
 		document.getElementById('tbCitySearch').blur();
 	};
 	return (
-		<div className="search-input-container">
+		<React.Fragment>
 			<div>
 				<input
 					type="text"
 					id="tbCitySearch"
 					className="search-input"
-					maxLength="75"
+					maxLength="35"
 					autoComplete="off"
 					onKeyDown={(event) => {
 						if (event.keyCode === 13) {
@@ -32,7 +32,7 @@ const SearchBox = (props) => {
 					<i className="fas fa-spinner fa-spin" />
 				)}
 			</div>
-		</div>
+		</React.Fragment>
 	);
 };
 

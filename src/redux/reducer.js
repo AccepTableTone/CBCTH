@@ -12,8 +12,8 @@ const appReducer = (state, action) => {
 		case CONSTS.ACTION_TYPE_IS_SEARCHING:
 			return { ...state, isSearching: action.isSearching };
 		/**waiting on async searchrequest */
-		case CONSTS.ACTION_TYPE_FAILED_SEARCH:
-			return { ...state, failedSearch: true, searchTerm: action.searchTerm };
+		case CONSTS.ACTION_TYPE_EMPTY_SEARCH:
+			return { ...state, emptySearch: true, searchTerm: action.searchTerm, hasError: false, isSearching: false };
 		/**have user geo location */
 		case CONSTS.ACTION_TYPE_USER_LOCATION:
 			return { ...state, userPosition: action.userPosition, haveUserPosition: action.haveUserPosition };
@@ -26,7 +26,8 @@ const appReducer = (state, action) => {
 				isLoading: false,
 				isSearching: false,
 				searchTerm: '',
-				failedSearch: false
+				emptySearch: false,
+				hasError: false
 			};
 		/**have some 5 day forecast data */
 		case CONSTS.ACTION_TYPE_FORECAST_DATA:
@@ -43,14 +44,19 @@ const appReducer = (state, action) => {
 			return { ...state, showSearch: action.showSearch };
 		/**update background image */
 		case CONSTS.ACTION_TYPE_SETTING_BACKGROUND:
-			/**we keep a list of images - if the user searches for the same city then we don't need to all the api again (this isn't implemenetd yet...but it will be e!--[..\]) */
-			const currentImage = state.backgroundImage;
 			return {
 				...state,
-				lastBackgroundImage: currentImage,
+				lastBackgroundImage: state.backgroundImage,
 				backgroundImage: action.backgroundImage
 			};
-
+		case CONSTS.ACTION_TYPE_HAS_ERROR:
+			return {
+				...state,
+				hasError: true,
+				emptySearch: false,
+				isSearching: false,
+				errorMessage: action.errorMessage
+			};
 		default:
 			return state;
 	}

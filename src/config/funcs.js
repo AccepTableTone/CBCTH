@@ -155,10 +155,12 @@ export default {
 
 		/**we are only going to display 6am, noon, and 6pm in the 5 day forecast - so filter accordingly */
 		forecastData.details = forecastJson.list.filter(
-			(f) => f.dt_txt.includes('6:00') || f.dt_txt.includes('12:00') || f.dt_txt.includes('18:00')
+			(f) => f.dt_txt.indexOf('6:00') > -1 || f.dt_txt.indexOf('12:00') > -1 || f.dt_txt.indexOf('18:00') > -1
 		);
 		/**create a some new properties from the dates in the data */
 		forecastData.details.map((m) => {
+			/**the API forecast date isn't loved and adored by IE or safari when we call new Date() - so we fix it here */
+			m.dt_txt = m.dt_txt.replace(' ', 'T');
 			/**get month and day */
 			m.dt = this.formatDate(new Date(m.dt_txt), 'MMMM DD');
 			/**lets get the day of week as well */

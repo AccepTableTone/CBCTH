@@ -18,7 +18,7 @@ export default {
 	showSearch: false,
 	isSearching: false,
 	searchTerm: '',
-	failedSearch: false,
+	emptySearch: false,
 
 	backgroundImage: null,
 	lastBackgroundImage: CONSTS.STRING_DEFAULT_BG_IMAGE

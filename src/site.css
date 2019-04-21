@@ -12,18 +12,27 @@ html {
 	background-size: cover;
 	background-color: rgb(11, 78, 95);
 }
-
+.content-container {
+	width: 22%;
+	min-width: 300px;
+	min-height: 320px;
+	margin: auto;
+	position: relative;
+	top: 12%;
+}
+@media (max-width: 675px) {
+	.content-container {
+		top: 2px !important;
+	}
+}
 /* SEARCH */
 .search-container {
-	height: 60px;
+	height: 43px;
 	margin: auto;
-	width: 22%;
 	min-width: 300px;
 	top: 15%;
 	position: relative;
-}
-.search-input-container {
-	padding-bottom: 5px;
+	padding-bottom: 2px;
 }
 .search-input {
 	outline: 0;
@@ -42,18 +51,37 @@ html {
 	position: absolute;
 	z-index: 999;
 	right: 5px;
-	top: 20px;
+	top: 5px;
 	font-size: 30px;
 }
-.failed-search-msg {
-	height: 15px;
-	font-family: 'Montserrat', sans-serif;
-	font-size: 11px;
+/* MESSAGING */
+.messaging-container {
+	height: 43px;
+	padding-bottom: 2px;
+}
+.failed-search-msg,
+.error-msg {
+	height: 100%;
+	font-size: 10px;
 	font-weight: bold;
 	color: #000;
-	text-align: center;
-	text-shadow: 4px 4px 6px #fff;
+	background-color: rgba(255, 255, 255, 0.7);
 }
+.failed-search-msg div,
+.error-msg div {
+	font-family: 'Montserrat', sans-serif;
+	padding: 3px 0 1px 6px;
+}
+.failed-search-msg div:first-child,
+.error-msg div:first-child {
+	font-size: 22px;
+	padding-top: 3px;
+}
+.error-msg {
+	background-color: rgba(255, 0, 0, 0.9);
+	color: #fff;
+}
+
 .no-location-msg {
 	font-family: 'Montserrat', sans-serif;
 	font-size: 20px;
@@ -71,14 +99,8 @@ html {
 }
 /* WEATHER DETAILS */
 .details-container {
-	width: 22%;
-	min-width: 300px;
-	min-height: 320px;
 	padding: 15px 30px;
 	background-color: rgba(0, 0, 0, 0.5);
-	margin: auto;
-	position: relative;
-	top: 15%;
 }
 
 .summary-icon {
@@ -255,6 +277,13 @@ html {
 	width: 140px;
 	margin-right: 40px;
 	text-align: center;
+}
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+	/* IE10+ CSS styles go here */
+	.ticker-item {
+		position: relative;
+		top: -25px;
+	}
 }
 .label-ticker-item {
 	width: 360px !important;

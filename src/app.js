@@ -45,24 +45,38 @@ class App extends React.Component {
 					this.props.state.lastBackgroundImage
 				)}
 			>
-				<React.Fragment>
-					<div className="search-container">
-						{this.props.state.showSearch && (
-							<React.Fragment>
-								<div className="failed-search-msg">
-									{this.props.state.failedSearch &&
-										`We could not find the city '${this.props.state
-											.searchTerm}'. Please try again.`}
+				<div className="content-container">
+					<div className="messaging-container">
+						{this.props.state.emptySearch && (
+							<div className="failed-search-msg display-flex">
+								<div>
+									<i className="far fa-frown" />
 								</div>
-
-								<SearchBox
-									isSeaching={this.props.state.isSearching}
-									getWeatherByCityName={this.getWeatherByCityName}
-								/>
-							</React.Fragment>
+								<div>
+									{`We could not find the city '${this.props.state.searchTerm}.`}
+									<br />Please try again.
+								</div>
+							</div>
+						)}
+						{this.props.state.hasError && (
+							<div className="error-msg display-flex">
+								<div>
+									<i className="fas fa-exclamation-triangle" />
+								</div>
+								{/* errorMessage is wrapped in a div.... should be wrapped in a div */}
+								{this.props.state.errorMessage}
+							</div>
 						)}
 					</div>
 
+					<div className="search-container">
+						{this.props.state.showSearch && (
+							<SearchBox
+								isSearching={this.props.state.isSearching}
+								getWeatherByCityName={this.getWeatherByCityName}
+							/>
+						)}
+					</div>
 					<WeatherDetails
 						weatherData={this.props.state.weatherData}
 						refreshWeatherData={this.refreshWeatherData.bind(this)}
@@ -75,14 +89,13 @@ class App extends React.Component {
 						haveWeatherData={this.props.state.haveWeatherData}
 						haveUserPosition={this.props.state.haveUserPosition}
 					/>
-
-					{this.props.state.haveForeCastData && (
-						<WeatherTicker
-							forecastData={this.props.state.foreCastData}
-							currentTemperatureUnit={this.props.state.currentTemperatureUnit}
-						/>
-					)}
-				</React.Fragment>
+				</div>
+				{this.props.state.haveForeCastData && (
+					<WeatherTicker
+						forecastData={this.props.state.foreCastData}
+						currentTemperatureUnit={this.props.state.currentTemperatureUnit}
+					/>
+				)}
 			</div>
 		);
 	}
