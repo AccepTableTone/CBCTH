@@ -7,7 +7,7 @@
 - You can view the assignment online at [cbcth.acceptabletone.com](http://cbcth.acceptabletone.com). 
 - Code is hosted in the following repo: [github.com/AccepTableTone/CBCTH](https://github.com/AccepTableTone/CBCTH).
 - To run the project locally, clone the above repo, run *npm install* then *npm start*
-- The site is not IE 11 friendly (a promise polyfill and fetch alternative is the fix) - Chrome and Firefox, all good e!--[oo/] (FIXED latest commit)
+- The site is not IE 11 friendly (a promise polyfill and fetch alternative is the fix) - Chrome and Firefox, all good e!--[oo/] (FIXED latest commit... still not 100%)
 
 ##### DEVIATIONS
  - The weather information by location is pulled down as XML and parsed to JSON per the technical test summary but the 5 day forecast is pulled down as JSON (sort of a deviation)
